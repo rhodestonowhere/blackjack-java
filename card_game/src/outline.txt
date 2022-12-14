@@ -1,0 +1,27 @@
+
+PLAN FOR GAME IS AS FOLLOWS:
+
+    How the game is played:
+        1. The game is launched when the program begins.
+        2. The player and dealer(non-player) will be given a hand drawn randomly from a deck of cards.
+        3. The player will have the option to hit or stay until they bust or win.
+        4. The game ends when the player either wins or loses. There will be a prompt asking if they 
+        wish to play again.
+        5. The game and program ends when the player specifies the termination command at the end of a game.
+
+    Structure of the program:
+        1. There are three primary classes: Deck, Card, and Participant.
+            Deck:
+                1. Deck should be in charge of generating a deck of valid cards with values and suits, 
+            with no repetition.
+                a. maybe there should be a shuffle command?
+            Card:
+                1. Card contains the information for an individual card, which is the value and suit. 
+            Participant:
+                1. Participant should contain a hand of cards to play with.
+        2. The deck of cards is generated like so:
+            a. There will be a loop that creates an initial deck of cards in the same order each time.
+                - the function to create a card should be made in the Card class.
+            b. The cards are placed into a deck, and then another function shall randomly rearrange the cards.
+                - this is our shuffle function.
+            c. Once the deck has been shuffled, cards can then be given to participants' hands.
