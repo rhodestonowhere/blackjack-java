@@ -33,6 +33,25 @@ class Participant{
         return newDeck;
     }
     
+    public void printHand(Participant par){
+        for(int i = 0; i < par.hand.size(); i++){
+            switch(par.hand.get(i).value){
+                case 11:
+                    System.out.println("J" + " of " + par.hand.get(i).suit);
+                    break;
+                case 12:
+                    System.out.println("Q" + " of " + par.hand.get(i).suit);
+                    break;
+                case 13:
+                    System.out.println("K" + " of " + par.hand.get(i).suit);
+                    break;
+                default:
+                    System.out.println(par.hand.get(i).value + " of " + par.hand.get(i).suit);
+            }
+        }
+
+    }
+    
     //randomly gets a card from a deck.
     public Card[] hit(Card[] deck){
         int randInt = generator.nextInt(deck.length);

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class game {
     //This class is the main driver of the game of blackjack.
     public static void main(String[] args) throws Exception {
@@ -20,20 +22,22 @@ public class game {
         deck = player.hit(deck);
         deck = player.hit(deck);
         System.out.println("Player hand is: ");
-        for(int i = 0; i < player.hand.size(); i++){
-            System.out.println(player.hand.get(i).value + " of " + player.hand.get(i).suit);
-        }
-        System.out.println("Player hand value is: " + player.handValue);
-        System.out.println("-------------------------------------");
+        // for(int i = 0; i < player.hand.size(); i++){
+        //     System.out.println(player.hand.get(i).value + " of " + player.hand.get(i).suit);
+        // }
+        player.printHand(player);
+        // System.out.println("Player hand value is: " + player.handValue);
+        // System.out.println("-------------------------------------");
         Participant house = new Participant();
         deck = house.hit(deck);
         deck = house.hit(deck);
         System.out.println("Dealer hand is: ");
-        for(int i = 0; i < player.hand.size(); i++){
-            System.out.println(house.hand.get(i).value + " of " + house.hand.get(i).suit);
-        }
-        System.out.println("Dealer hand value is: " + house.handValue);
-        System.out.println("-------------------------------------");
+        // for(int i = 0; i < player.hand.size(); i++){
+        //     System.out.println(house.hand.get(i).value + " of " + house.hand.get(i).suit);
+        // }
+        house.printHand(house);
+        // System.out.println("Dealer hand value is: " + house.handValue);
+        // System.out.println("-------------------------------------");
         System.out.println("printing deck after hits");
         System.out.println("-------------------------------------");
         for(int i =0; i<deck.length-1;i++){
