@@ -33,6 +33,7 @@ class Participant{
         return newDeck;
     }
     
+    //prints the hand of the inputted participant.
     public void printHand(Participant par){
         for(int i = 0; i < par.hand.size(); i++){
             switch(par.hand.get(i).value){
@@ -51,6 +52,18 @@ class Participant{
         }
 
     }
+
+    //evaluates the participant's hand to playing or bust
+    public boolean evalHand(Participant par){
+        //if bust return true
+        //else false
+        if(par.handValue > 21){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     //randomly gets a card from a deck.
     public Card[] hit(Card[] deck){
@@ -59,7 +72,20 @@ class Participant{
         Card randCard = deck[randInt];
         //System.out.println(randCard.value + " " + randCard.suit);
         hand.add(randCard);
-        handValue += randCard.value;
+        switch(randCard.value){
+            case 11:
+                handValue += 10;
+                break;
+            case 12:
+                handValue += 10;
+                break;
+            case 13:
+                handValue += 10;
+                break;
+            default:
+                handValue += randCard.value;
+        }
+        //handValue += randCard.value;
         deck = removeCard(deck, randInt);
         // System.out.println("====================================");
         // System.out.println("printing deck in hit");
