@@ -36,6 +36,7 @@ class Participant{
     //prints the hand of the inputted participant.
     public void printHand(Participant par){
         for(int i = 0; i < par.hand.size(); i++){
+            //special cases for cards with value 1, 11-13 to account for Ace and Face cards
             switch(par.hand.get(i).value){
                 case 11:
                     System.out.println("J" + " of " + par.hand.get(i).suit);
@@ -46,6 +47,8 @@ class Participant{
                 case 13:
                     System.out.println("K" + " of " + par.hand.get(i).suit);
                     break;
+                case 1:
+                    System.out.println("A" + " of " + par.hand.get(i).suit);
                 default:
                     System.out.println(par.hand.get(i).value + " of " + par.hand.get(i).suit);
             }
@@ -67,11 +70,15 @@ class Participant{
     
     //randomly gets a card from a deck.
     public Card[] hit(Card[] deck){
-        int randInt = generator.nextInt(deck.length);
+        //generate random int
+        int randInt = generator.nextInt(deck.length-1);
         //System.out.println(randInt);
+        //grab index of randomInt
         Card randCard = deck[randInt];
         //System.out.println(randCard.value + " " + randCard.suit);
+        //System.out.println(randCard);
         hand.add(randCard);
+        //special cases to account for face cards for calculating hand value
         switch(randCard.value){
             case 11:
                 handValue += 10;
@@ -86,6 +93,7 @@ class Participant{
                 handValue += randCard.value;
         }
         //handValue += randCard.value;
+        //remove card from deck so it cannot be drawn again
         deck = removeCard(deck, randInt);
         // System.out.println("====================================");
         // System.out.println("printing deck in hit");

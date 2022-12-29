@@ -4,7 +4,7 @@ public class game {
     //This class is the main driver of the game of blackjack.
     public static void main(String[] args) throws Exception {
         // -------------------------------------------
-        // DECBUG CODE
+        // DEBUG CODE
         // -------------------------------------------
         // Card testT = new Card();
         // Deck testY = new Deck();
@@ -15,9 +15,11 @@ public class game {
         // System.out.println(card1.value);
         // System.out.println(card1.suit);
         // -------------------------------------------
+        //create deck
         Card[] deck = new Card[52];
         deck = Card.genDeck();
         System.out.println("-------------------------------------");
+        //initialize participants' hands
         Participant player = new Participant();
         deck = player.hit(deck);
         deck = player.hit(deck);
@@ -35,7 +37,7 @@ public class game {
         // for(int i = 0; i < player.hand.size(); i++){
         //     System.out.println(house.hand.get(i).value + " of " + house.hand.get(i).suit);
         // }
-        house.printHand(house);
+        // house.printHand(house);
         // System.out.println("Dealer hand value is: " + house.handValue);
         // System.out.println("-------------------------------------");
         // System.out.println("printing deck after hits");
