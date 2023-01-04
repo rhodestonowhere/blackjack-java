@@ -13,8 +13,6 @@ class Participant{
         if (deck == null || index < 0 || index >= deck.length){
             return deck;
         }
-        // System.out.println("start of removeCard");
-        // System.out.println("removing card: " + deck[index].value + " of " + deck[index].suit);
         Card[] newDeck = new Card[deck.length - 1];
         for(int i = 0, k = 0; i < deck.length; i++){
             if(i == index){
@@ -23,13 +21,6 @@ class Participant{
             newDeck[k] = deck[i];
             k++;
         }
-        // System.out.println("///////////////////////////////////");
-        // System.out.println("printing deck in removeCard");
-        // System.out.println("///////////////////////////////////");
-        // for(int i =0; i<newDeck.length-1;i++){
-        //     System.out.println(newDeck[i].value + " of " + newDeck[i].suit);        
-        // }
-        // System.out.println("///////////////////////////////////");
         return newDeck;
     }
     
@@ -49,6 +40,7 @@ class Participant{
                     break;
                 case 1:
                     System.out.println("A" + " of " + par.hand.get(i).suit);
+                    break;
                 default:
                     System.out.println(par.hand.get(i).value + " of " + par.hand.get(i).suit);
             }
@@ -67,16 +59,24 @@ class Participant{
             return false;
         }
     }
+
+    //evaluate the special case of ace
+    public void evalAce(Participant par){
+        for(int i = 0; i < par.hand.size(); i++){
+            if(par.hand.get(i).value == 1){
+                if(par.handValue + 10 <= 21){
+                    par.handValue += 10;
+                }
+            }
+        }
+    }
     
     //randomly gets a card from a deck.
     public Card[] hit(Card[] deck){
         //generate random int
         int randInt = generator.nextInt(deck.length-1);
-        //System.out.println(randInt);
         //grab index of randomInt
         Card randCard = deck[randInt];
-        //System.out.println(randCard.value + " " + randCard.suit);
-        //System.out.println(randCard);
         hand.add(randCard);
         //special cases to account for face cards for calculating hand value
         switch(randCard.value){
@@ -92,17 +92,8 @@ class Participant{
             default:
                 handValue += randCard.value;
         }
-        //handValue += randCard.value;
         //remove card from deck so it cannot be drawn again
         deck = removeCard(deck, randInt);
-        // System.out.println("====================================");
-        // System.out.println("printing deck in hit");
-        // System.out.println("====================================");
-        // for(int i =0; i<deck.length-1;i++){
-        //     System.out.println(deck[i].value + " of " + deck[i].suit);        
-        // }
-        // System.out.println("====================================");
         return deck;
-        //System.out.println("Size of list: " + hand.size());
     }
 }

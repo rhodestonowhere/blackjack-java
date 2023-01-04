@@ -34,7 +34,6 @@ class Card{
         String suit = suitStack.peek();
         System.out.println("before loop");
         for(int i = 0; i<51; i++){
-            //System.out.println("Starting generation loop.");
             if(suitCounter > 13){
                 suitCounter = 1;
                 suitStack.pop();
@@ -43,8 +42,6 @@ class Card{
             }
             Card card = Card.genCard(suitCounter, suit);
             deck[i] = card;
-            //System.out.println("Card Created:");
-            //System.out.println(deck[i].value + " of " + deck[i].suit);
             suitCounter++;
         }
         System.out.println("genDeck completed.");
