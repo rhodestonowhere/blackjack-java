@@ -53,6 +53,11 @@ public class game {
             System.out.println("Begin game loop...");
             System.out.println("Your hand: ");
             player.printHand(player);
+            if(player.handValue == 21){
+                System.out.println("You win!");
+                gameInt = 0;
+                break;
+            }
             System.out.println("Enter 1 to hit or 2 to stay.");
             String userInput = input.nextLine();
             System.out.println("User inputted: " + userInput);
@@ -63,6 +68,7 @@ public class game {
                 deck = player.hit(deck);
                 System.out.println("Your hand after hit: ");
                 player.printHand(player);
+                player.evalAce(player);
                 if(player.evalHand(player)){ //in the case the player has busted
                     System.out.println("Player hand value is: ");
                     System.out.println(player.handValue);
@@ -75,7 +81,18 @@ public class game {
                 }
             }
             else if(userInput.equals("2")){ //user has chosen to stay
+                //check for win
+                if(player.handValue == 21){
+                    System.out.println("Player hand value is: ");
+                    System.out.println(player.handValue);
+                    System.out.println("You win!");
+                    gameInt = 0;
+                    break;
+                }
                 System.out.println("Chosen to stand.");
+                player.evalAce(player);
+                System.out.println("Player hand value is: ");
+                System.out.println(player.handValue);
                 System.out.println("House now plays.");
                 //house logic
                 while(house.handValue < 17){ //loop persists until house handValue is greater or equal to 17

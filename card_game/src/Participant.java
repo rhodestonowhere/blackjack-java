@@ -49,6 +49,7 @@ class Participant{
                     break;
                 case 1:
                     System.out.println("A" + " of " + par.hand.get(i).suit);
+                    break;
                 default:
                     System.out.println(par.hand.get(i).value + " of " + par.hand.get(i).suit);
             }
@@ -65,6 +66,20 @@ class Participant{
         }
         else{
             return false;
+        }
+    }
+
+    //evaluate the special case of ace
+    public void evalAce(Participant par){
+        for(int i = 0; i < par.hand.size(); i++){
+            // System.out.println("Current participant handValue: ");
+            // System.out.println(par.handValue);
+            if(par.hand.get(i).value == 1){
+                if(par.handValue + 10 <= 21){
+                    //System.out.println("Adding value of 10 to make ace value = 11.");
+                    par.handValue += 10;
+                }
+            }
         }
     }
     
