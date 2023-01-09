@@ -12,11 +12,10 @@ public class game {
         deck = player.hit(deck);
         deck = player.hit(deck);
         System.out.println("Player hand is: ");
-        player.printHand(player);
+        player.printHand();
         Participant house = new Participant();
         deck = house.hit(deck);
         deck = house.hit(deck);
-        System.out.println("Dealer hand is: ");
         //initialize scanner
         Scanner input = new Scanner(System.in);
         //game loop
@@ -24,7 +23,7 @@ public class game {
         while(gameInt == 1){
             System.out.println("Begin game loop...");
             System.out.println("Your hand: ");
-            player.printHand(player);
+            player.printHand();
             if(player.handValue == 21){
                 System.out.println("You win!");
                 gameInt = 0;
@@ -38,9 +37,9 @@ public class game {
                 //add card to hand
                 deck = player.hit(deck);
                 System.out.println("Your hand after hit: ");
-                player.printHand(player);
-                player.evalAce(player);
-                if(player.evalHand(player)){ //in the case the player has busted
+                player.printHand();
+                player.evalAce();
+                if(player.evalHand()){ //in the case the player has busted
                     System.out.println("Player hand value is: ");
                     System.out.println(player.handValue);
                     System.out.println("You busted!");
@@ -61,7 +60,7 @@ public class game {
                     break;
                 }
                 System.out.println("Chosen to stand.");
-                player.evalAce(player);
+                player.evalAce();
                 System.out.println("Player hand value is: ");
                 System.out.println(player.handValue);
                 System.out.println("House now plays.");

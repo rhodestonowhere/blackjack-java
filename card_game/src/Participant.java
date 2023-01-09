@@ -25,34 +25,34 @@ class Participant{
     }
     
     //prints the hand of the inputted participant.
-    public void printHand(Participant par){
-        for(int i = 0; i < par.hand.size(); i++){
+    public void printHand(){
+        for(int i = 0; i < this.hand.size(); i++){
             //special cases for cards with value 1, 11-13 to account for Ace and Face cards
-            switch(par.hand.get(i).value){
+            switch(this.hand.get(i).value){
                 case 11:
-                    System.out.println("J" + " of " + par.hand.get(i).suit);
+                    System.out.println("J" + " of " + this.hand.get(i).suit);
                     break;
                 case 12:
-                    System.out.println("Q" + " of " + par.hand.get(i).suit);
+                    System.out.println("Q" + " of " + this.hand.get(i).suit);
                     break;
                 case 13:
-                    System.out.println("K" + " of " + par.hand.get(i).suit);
+                    System.out.println("K" + " of " + this.hand.get(i).suit);
                     break;
                 case 1:
-                    System.out.println("A" + " of " + par.hand.get(i).suit);
+                    System.out.println("A" + " of " + this.hand.get(i).suit);
                     break;
                 default:
-                    System.out.println(par.hand.get(i).value + " of " + par.hand.get(i).suit);
+                    System.out.println(this.hand.get(i).value + " of " + this.hand.get(i).suit);
             }
         }
 
     }
 
     //evaluates the participant's hand to playing or bust
-    public boolean evalHand(Participant par){
+    public boolean evalHand(){
         //if bust return true
         //else false
-        if(par.handValue > 21){
+        if(this.handValue > 21){
             return true;
         }
         else{
@@ -61,11 +61,11 @@ class Participant{
     }
 
     //evaluate the special case of ace
-    public void evalAce(Participant par){
-        for(int i = 0; i < par.hand.size(); i++){
-            if(par.hand.get(i).value == 1){
-                if(par.handValue + 10 <= 21){
-                    par.handValue += 10;
+    public void evalAce(){
+        for(int i = 0; i < this.hand.size(); i++){
+            if(this.hand.get(i).value == 1){
+                if(this.handValue + 10 <= 21){
+                    this.handValue += 10;
                 }
             }
         }
