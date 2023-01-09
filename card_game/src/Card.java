@@ -27,18 +27,18 @@ class Card{
     //create a data strucutre to store suit names.
     //reset this value to 1 once > 13. switch the suit as well.
     public static Card[] genDeck(){
-        System.out.println("Starting genDeck Function.");
+        //System.out.println("Starting genDeck Function.");
         int suitCounter = 1;
         Stack<String> suitStack = new Stack<String>();
         populateSuitStack(suitStack);
         String suit = suitStack.peek();
-        System.out.println("before loop");
+        //System.out.println("before loop");
         for(int i = 0; i<51; i++){
             if(suitCounter > 13){
                 suitCounter = 1;
                 suitStack.pop();
                 suit = suitStack.peek();
-                System.out.println("Switching Suits.");
+                //System.out.println("Switching Suits.");
             }
             Card card = Card.genCard(suitCounter, suit);
             deck[i] = card;
