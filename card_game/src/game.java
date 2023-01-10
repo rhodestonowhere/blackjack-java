@@ -41,8 +41,6 @@ public class game {
                 Thread.sleep(1000);
                 //add card to hand
                 deck = player.hit(deck);
-                System.out.println("Your hand after hit: ");
-                player.printHand();
                 player.evalAce();
                 if(player.evalHand()){ //in the case the player has busted
                     Thread.sleep(500);
@@ -75,7 +73,9 @@ public class game {
                 System.out.println(player.handValue);
                 System.out.println("House now plays.");
                 //house logic
-                while(house.handValue < 17){ //loop persists until house handValue is greater or equal to 17
+                //loop persists until house handValue is greater or equal to 17
+                //house cannot continue to hit cards once a card value > 17 is reached
+                while(house.handValue < 17){ 
                     System.out.println("House hits.");
                     Thread.sleep(700);
                     deck = house.hit(deck);
@@ -90,7 +90,7 @@ public class game {
                         System.out.println("Player has won!");
                     }
                     else{
-                        System.out.println("House has won gg ez");
+                        System.out.println("House has won!");
                     }
                     gameInt = 0;
                 }
